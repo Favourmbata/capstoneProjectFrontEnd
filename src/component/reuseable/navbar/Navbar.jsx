@@ -20,6 +20,7 @@ const Navbar = () => {
                 <nav className={"md:flex items-center md:pb-0 pb-12 absolute md:static bg-white md:z-auto z-[-1] left-0 w-full md:w-auto md:pl-0 pl-9 transition-all duration-500 ease-in "}>
                     <Link to="/home" className="block md:inline-block mt-2 md:mt-0 md:ml-8 text-gray-800 hover:text-gray-400 duration-500 font-bold text-xl">Home</Link>
                     <Link to="/about" className="block md:inline-block mt-2 md:mt-0 md:ml-8 text-gray-800 hover:text-gray-400 duration-500 font-bold text-xl">About</Link>
+                    <Link to="/about" className="block md:inline-block mt-2 md:mt-0 md:ml-8 text-gray-800 hover:text-gray-400 duration-500 font-bold text-xl">Services</Link>
                 </nav>
                 <div className={"flex items-center space-x-4"}>
                 <div onClick={()=> navigate("/login")}>
