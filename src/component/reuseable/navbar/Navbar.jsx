@@ -6,10 +6,12 @@ import FilledButton from '../filledButton/FilledButton';
 import OutlinedButton from "../outlinedButton/OutlinedButton";
 import {useNavigate} from "react-router-dom";
 
+
 const Navbar = () => {
     const navigate = useNavigate();
     return (
-        <div className="shadow-md w-full fixed top-0 left-0">
+        <div>
+        <div className="shadow-md w-full">
             <div className="md:flex items-center justify-between bg-white py-4 md:px-10 px-7">
                 <div className="font-bold text-2xl cursor-pointer flex items-center font-[poppins] text-blue-500">
                     {/*<img src={chain} alt={""}/>*/}
@@ -30,6 +32,9 @@ const Navbar = () => {
                 </div>
                 </div>
             </div>
+
+        </div>
+
         </div>
     );
 }
