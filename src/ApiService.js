@@ -4,17 +4,18 @@ import axios from "axios";
 
 const apiClient = axios.create({
     providerBaseURL: 'http://localhost:8080/api/v1/ServiceFusion',
-    customerBaseURL:'http://localhost:8080/api/v1/customer/',
-    adminBaseURL:'http://localhost:8080/api/v1/admin/',
+     customerBaseURL:'http://localhost:8080/api/v1/customer/',
+    // adminBaseURL:'http://localhost:8080/api/v1/admin/',
     headers: {
         'Content-Type': 'application/json',
+
     },
 });
 
 
 export const registerServiceProvider = async (data) => {
     try {
-        const response = await apiClient.post('/registerServiceProvider', data);
+        const response = await apiClient.post('http://localhost:8080/api/v1/ServiceFusion/registerServiceProvider', data);
         return response.data;
     } catch (error) {
         console.error('There was an error registering a service provider', error);
@@ -32,9 +33,9 @@ export const loginServiceProvider = async (data) => {
     }
 };
 
-export const registerCustomer = async (data) => {
+export const register = async (data) => {
     try {
-        const response = await apiClient.post('/register', data);
+        const response = await apiClient.post('http://localhost:8080/api/v1/customer/register', data);
         return response.data;
     } catch (error) {
         console.error('There was an error registering a customer', error);
@@ -50,6 +51,16 @@ export const loginCustomer = async (data) => {
         throw error;
     }
 };
+export const bookService = async (data) => {
+    try {
+        const response = await axios.post('/bookService', data);
+        return response.data;
+    } catch (error) {
+        console.error('Booking service failed', error);
+        throw error;
+    }
+};
+
 export const admin = async (data) => {
     try {
         const response = await apiClient.post('/register', data);

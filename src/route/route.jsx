@@ -5,6 +5,9 @@ import Login from "../component/authetication/Login";
 import RegistrationPage from "../component/authetication/RegistrationPage";
 import CustomerRegister from "../component/authetication/CustomerRegister";
 import Hero from "../features/Hero";
+import CustomerDashBoard from "../features/CustomerDashBoard";
+import BookService from "../features/BookService";
+import ServiceProviderDashBoard from "../features/ServiceProviderDashBoard";
 
 export const Routes = [
     {
@@ -43,8 +46,20 @@ export const Routes = [
             {
                 path: "/login",
                 element: <Login/>
-            }
+            },
+            {
+                path: "/customer-dashboard",
+                element: <CustomerDashBoard />
+            },
+            {
+                path: "/serviceProvider-dashboard",
+                element: <ServiceProviderDashBoard />
+            },
 
+            {
+                path: "/book-service",
+                element: <BookService />
+            }
         ]
 
     }

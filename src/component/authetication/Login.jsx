@@ -4,6 +4,7 @@ import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 import {useState} from "react";
 import {loginServiceProvider} from "../../ApiService"
+// import {loginCustomer} from "../../ApiService";
 import signIn from "../../asserts/6343825.jpg";
 
 const initialValue = {
@@ -25,15 +26,29 @@ const Login =()=>{
     // const onSubmit = (value)=>{
     //     console.log(value)
     // }
-    const onSubmit = async (values) => {
+    const onSubmit = async (values,{resetForm}) => {
         try {
             const response = await loginServiceProvider(values);
             console.log('Registration successful:', response);
         } catch (error) {
             console.error('Error registering service provider:', error);
+            alert("LogIn successful")
+            resetForm();
 
         }
     }
+
+    // const onSubmitTwo = async (values,{resetForm}) => {
+    //     try {
+    //         const response = await loginServiceProvider(values);
+    //         console.log('Registration successful:', response);
+    //     } catch (error) {
+    //         console.error('Error registering service provider:', error);
+    //         alert("LogIn successful")
+    //         resetForm();
+    //
+    //     }
+    // }
     return (
         <div className="flex flex-col md:flex-row justify-center items-center min-h-screen bg-gray-100">
             <div className="md:flex bg-white shadow-lg rounded-lg overflow-hidden">
