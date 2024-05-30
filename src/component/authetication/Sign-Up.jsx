@@ -4,7 +4,7 @@ import {Button, IconButton} from "@mui/material";
 import {Visibility,VisibilityOff} from "@mui/icons-material";
 import {useState} from "react";
 import {registerServiceProvider} from "../../ApiService";
-import  signUp from "../../asserts/6310507.jpg"
+import  signUp from "../../asserts/signUp.jpg"
 import {Link} from "react-router-dom";
 
 const initialValues = {
