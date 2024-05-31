@@ -3,7 +3,7 @@ import {Field,Form,Formik} from "formik";
 import {Button, IconButton} from "@mui/material";
 import {Visibility,VisibilityOff} from "@mui/icons-material";
 import {useState} from "react";
-import {registerServiceProvider} from "../../ApiService";
+import ApiService from "../../ApiService";
 import  signUp from "../../asserts/signUp.jpg"
 import {Link} from "react-router-dom";
 
@@ -13,6 +13,7 @@ const initialValues = {
       phoneNumber: "",
       password: "",
       serviceCategory:"",
+      location:"",
       yearsOfExperience:"",
       description:""
   }
@@ -28,16 +29,21 @@ const SignUp = ()=>{
          event.preventDefault()
       }
     const onSubmit = async (values,{resetForm}) => {
-        try {
-            const response = await registerServiceProvider(values);
+        console.log('Form values:', values);
+         try {
+            const response = await ApiService.register(values);
             console.log('Registration successful:', response);
             alert("Registration successful")
             resetForm();
 
-
         } catch (error) {
             console.error('Error registering service provider:', error);
-
+             console.log(error)
+            if (error.response) {
+                alert(`Error: ${error.response.data.message || 'Failed to register'}`);
+            } else {
+                alert('Failed to register due to network or server error.');
+            }
         }
     }
 
@@ -104,7 +110,7 @@ const SignUp = ()=>{
                                         onClick={handleShowPassword}
                                         onMouseDown={handleMouseDown}
                                     >
-                                        {showPassword ? <Visibility /> : <VisibilityOff />}
+                                        {showPassword ? <Visibility/> : <VisibilityOff/>}
                                     </IconButton>
                                 </div>
                                 <div className="mb-4">
@@ -115,12 +121,35 @@ const SignUp = ()=>{
                                         className="w-full p-2 border border-gray-300 rounded"
                                         required
                                     >
-                                        <option value="">Select a role to register as</option>
+                                        <option value="">Select category</option>
                                         <option value="HAIRSTYLISTS">HAIRSTYLISTS</option>
                                         <option value="BARBERS">BARBERS</option>
                                         <option value="FASHION_DESIGNERS">FASHION_DESIGNERS</option>
                                         <option value="CLEANERS">CLEANERS</option>
                                         <option value="PLUMBERS">PLUMBERS</option>
+                                    </Field>
+                                </div>
+                                <div className="mb-4">
+                                    <Field
+                                        as="select"
+                                        id="location"
+                                        name="location"
+                                        className="w-full p-2 border border-gray-300 rounded"
+                                        required
+                                    >
+                                        <option value="">Select Location</option>
+                                        <option value="AGBADO_OKE_ODO">AGBADO_OKE_ODO</option>
+                                        <option value="AGBOYI_KETU">AGBOYI_KETU</option>
+                                        <option value="AYOBO_IPAJA">AYOBO_IPAJA</option>
+                                        <option value="BARIGA">BARIGA</option>
+                                        <option value="EGBE_IDIMU">EGBE_IDIMU</option>
+                                        <option value="EJIGBO">EJIGBO</option>
+                                        <option value="IGANDO_IKOTUN">IGANDO_IKOTUN</option>
+                                        <option value="IKOSI_ISHERI">IKOSI_ISHERI</option>
+                                        <option value=" ISOLO"> ISOLO</option>
+                                        <option value=" OJOKORO"> OJOKORO</option>
+                                        <option value=" ONIGBONGBO"> ONIGBONGBO</option>
+                                        <option value=" OJODU"> OJODU</option>
                                     </Field>
                                 </div>
                                 <div className="mb-4">
@@ -143,13 +172,17 @@ const SignUp = ()=>{
                                         required
                                     />
                                 </div>
+
                                 <div className="flex justify-center mb-4">
-                                    <Button variant="contained" type="submit" sx={{ backgroundColor: "blue", color: "white" }}>
+                                    <Button variant="contained" type="submit"
+                                            sx={{backgroundColor: "blue", color: "white"}}>
                                         SIGN UP
                                     </Button>
                                 </div>
                                 <div className="text-center text-blue-600">
-                                    If you already have an account, <Link to="/login" className="text-yellow-500 font-bold cursor-pointer">Log In</Link>
+                                    If you already have an account, <Link to="/login"
+                                                                          className="text-yellow-500 font-bold cursor-pointer">Log
+                                    In</Link>
                                 </div>
                             </Form>
                         )}

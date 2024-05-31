@@ -5,6 +5,9 @@ import image4 from "../asserts/Emergency Local Plumbers _ Commercial Plumbing Re
 import image5 from "../asserts/When To See A Stylist And When To Do It Yourself.jpg"
  import image6 from "../asserts/Premium Photo _ Two african  .jpg"
  import image7 from "../asserts/Premium Photo _ In a bustling tailor office .jpg"
+import image8 from "../asserts/WhatsApp Image 2024-05-30 at 16.40.47_88a1e528.jpg"
+import image9 from "../asserts/WhatsApp Image 2024-05-30 at 16.40.22_1072e60c.jpg"
+import image10 from "../asserts/WhatsApp Image 2024-05-30 at 16.40.36_3ad3bed0.jpg"
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -78,7 +81,7 @@ const Hero = ()=>{
     //         </div>
     //     </div>
     // );
-
+    //
     return (
         <div className="min-h-screen p-4">
             <div className="flex flex-col md:flex-row justify-between items-center">
@@ -91,7 +94,7 @@ const Hero = ()=>{
                     </h2>
                 </div>
                 <div className=" md:mt-0 md:ml-5 p-5">
-                    <img src={image1} alt="Skill provider" className=" mt-14 w-full md:w-96 md:h-80 object-cover rounded"/>
+                    {/*<img src={image1} alt="Skill provider" className=" mt-14 w-full md:w-96 md:h-80 object-cover rounded"/>*/}
                 </div>
             </div>
             <div className="mb-14">
@@ -116,6 +119,18 @@ const Hero = ()=>{
                     </div>
                     <div className="px-1">
                         <img src={image7} alt="Service 6" className=" w-full md:w-80 h-80 object-cover rounded"/>
+                    </div>
+                    <div className="px-1">
+                        <img src={image8} alt="Service 6" className=" w-full md:w-80 h-80 object-cover rounded"/>
+                    </div>
+                    <div className="px-1">
+                        <img src={image9} alt="Service 6" className=" w-full md:w-80 h-80 object-cover rounded"/>
+                    </div>
+                    <div className="px-1">
+                        <img src={image10} alt="Service 6" className=" w-full md:w-80 h-80 object-cover rounded"/>
+                    </div>
+                    <div className="px-1">
+                        <img src={image1} alt="Service 6" className=" w-full md:w-80 h-80 object-cover rounded"/>
                     </div>
                 </Slider>
             </div>

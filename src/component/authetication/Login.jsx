@@ -3,7 +3,7 @@ import {Button, IconButton} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import {loginServiceProvider} from "../../ApiService"
+import ApiService  from "../../ApiService";
 // import {loginCustomer} from "../../ApiService";
 import signIn from "../../asserts/login.jpg";
 
@@ -28,7 +28,7 @@ const Login =()=>{
     // }
     const onSubmit = async (values,{resetForm}) => {
         try {
-            const response = await loginServiceProvider(values);
+            const response = await ApiService.loginProvider(values);
             console.log('Registration successful:', response);
         } catch (error) {
             console.error('Error registering service provider:', error);
@@ -38,9 +38,9 @@ const Login =()=>{
         }
     }
 
-    // const onSubmitTwo = async (values,{resetForm}) => {
+    // const onSubmit = async (values,{resetForm}) => {
     //     try {
-    //         const response = await loginServiceProvider(values);
+    //         const response = await ApiService.loginProvider(values);
     //         console.log('Registration successful:', response);
     //     } catch (error) {
     //         console.error('Error registering service provider:', error);

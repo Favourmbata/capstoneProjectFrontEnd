@@ -13,7 +13,7 @@ import image7 from "../asserts/Screenshot 2024-05-29 194008.png";
 import image8 from "../asserts/klh.jpg";
 import image9 from "../asserts/designer2.jpg";
 import image10 from "../asserts/download (4).jpg";
-import { bookService } from "../ApiService"; // Assuming you have this function implemented
+ import { bookService } from "../ApiService"; // Assuming you have this function implemented
 
 const ServiceProviderDashBoard = () => {
     const navigate = useNavigate();
@@ -29,8 +29,8 @@ const ServiceProviderDashBoard = () => {
         };
 
         try {
-            const response = await bookService(bookingDetails);
-            console.log('Service booked successfully:', response);
+            // const response = await bookService(bookingDetails);
+            // console.log('Service booked successfully:', response);
             alert("Service booked successfully!");
             navigate('/confirmation');
         } catch (error) {

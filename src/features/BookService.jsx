@@ -9,7 +9,7 @@ const BookService = () => {
     const [location, setLocation] = useState("");
     const navigate = useNavigate();
 
-    // Assuming you have a way to check if a user is registered/logged in
+
     const isRegistered = true; // Replace this with your actual check
 
     const handleClear = () => {
