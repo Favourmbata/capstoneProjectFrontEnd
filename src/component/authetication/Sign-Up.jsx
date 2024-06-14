@@ -5,7 +5,7 @@ import {Visibility,VisibilityOff} from "@mui/icons-material";
 import {useState} from "react";
 import ApiService from "../../ApiService";
 import  signUp from "../../asserts/signUp.jpg"
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 
 const initialValues = {
       fullName: "",
@@ -18,7 +18,7 @@ const initialValues = {
       description:""
   }
 const SignUp = ()=>{
-
+    const navigate = useNavigate();
 
       const [showPassword, setShowPassword] = useState(false);
       const handleShowPassword =() => {
@@ -35,7 +35,7 @@ const SignUp = ()=>{
             console.log('Registration successful:', response);
             alert("Registration successful")
             resetForm();
-
+             navigate("/serviceProvider-dashboard", { state: { serviceCategory: values.serviceCategory, location: values.location } });
         } catch (error) {
             console.error('Error registering service provider:', error);
              console.log(error)
@@ -119,8 +119,7 @@ const SignUp = ()=>{
                                         id="serviceCategory"
                                         name="serviceCategory"
                                         className="w-full p-2 border border-gray-300 rounded"
-                                        required
-                                    >
+                                        required>
                                         <option value="">Select category</option>
                                         <option value="HAIRSTYLISTS">HAIRSTYLISTS</option>
                                         <option value="BARBERS">BARBERS</option>

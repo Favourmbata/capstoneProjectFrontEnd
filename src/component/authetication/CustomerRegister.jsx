@@ -25,8 +25,15 @@ const CustomerRegister = () => {
             console.log('Customer Registered successfully:', registerResponse);
             if(registerResponse.registration === "Invalid password format"){
                 alert("Invalid Password format");
-            }else
-            navigate('/customer-dashboard');
+            }else{
+                localStorage.setItem('customer', JSON.stringify({
+                    id: registerResponse.id,
+                    fullName: values.fullName,
+                    email: values.email,
+                }));
+            }
+
+                navigate('/customer-dashboard');
         } catch (error) {
             console.error('Error registering customer:', error);
             alert(error.error || error.message || 'Failed to register');

@@ -1,7 +1,7 @@
 import {Formik,Form,Field} from "formik";
 import {Button, IconButton} from "@mui/material";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-import {Link} from "react-router-dom";
+import {Link,useNavigate} from "react-router-dom";
 import {useState} from "react";
 import ApiService  from "../../ApiService";
 // import {loginCustomer} from "../../ApiService";
@@ -13,9 +13,9 @@ const initialValue = {
 }
 
 
-const Login =()=>{
+const ServiceProviderLogIn =()=>{
     const [showPassword, setShowPassword] = useState(false);
-
+     const navigate = useNavigate()
     const handleShowPassword =() => {
         setShowPassword(!showPassword)
     }
@@ -29,28 +29,26 @@ const Login =()=>{
     const onSubmit = async (values,{resetForm}) => {
         try {
             const response = await ApiService.loginProvider(values);
-            console.log('Registration successful:', response);
-        } catch (error) {
-            console.error('Error registering service provider:', error);
-            alert("LogIn successful")
+            console.log('LogIn successful:', response);
+            localStorage.setItem('customer', JSON.stringify(response.data));
+
+
+            navigate("/serviceProvider-dashboard");
             resetForm();
 
+        } catch (error) {
+            console.error('Error logging in service provider:', error);
+            alert('ServiceProviderLogIn failed. Please check your credentials and try again.');
         }
-    }
 
-    // const onSubmit = async (values,{resetForm}) => {
-    //     try {
-    //         const response = await ApiService.loginProvider(values);
-    //         console.log('Registration successful:', response);
-    //     } catch (error) {
-    //         console.error('Error registering service provider:', error);
-    //         alert("LogIn successful")
-    //         resetForm();
-    //
-    //     }
-    // }
+
+        }
+
+
+
     return (
         <div className="flex flex-col md:flex-row justify-center items-center min-h-screen bg-gray-100">
+
             <div className="md:flex bg-white shadow-lg rounded-lg overflow-hidden">
                 <div className="md:w-1/2">
                     <img
@@ -113,4 +111,4 @@ const Login =()=>{
         </div>
     );
 }
-export default Login;
+export default ServiceProviderLogIn;

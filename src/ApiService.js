@@ -1,4 +1,3 @@
-
 import axios from "axios";
 
 
@@ -52,16 +51,7 @@ import axios from "axios";
 //         throw error;
 //     }
 // };
-// export const bookService = async (data) => {
-//     try {
-//         const response = await axios.post('/bookService', data);
-//         return response.data;
-//     } catch (error) {
-//         console.error('Booking service failed', error);
-//         throw error;
-//     }
-// };
-//
+
 // export const admin = async (data) => {
 //     try {
 //         const response = await apiClient.post('/register', data);
@@ -88,13 +78,13 @@ class ApiService {
         try {
             console.log('Sending user data:', userData);
             const response = await axios.post(
-                `${ApiService.BASE_URL}/api/v1/ServiceFusion/registerServiceProvider`,
+                `${ApiService.BASE_URL}/api/v1/serviceProvider/register`,
                 userData,
                 {
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: {'Content-Type': 'application/json'}
                 }
             );
-            console.log("registration Successful: ",response)
+            console.log("registration Successful: ", response)
             return response.data;
         } catch (error) {
             console.error('Error during registration:', error.response ? error.response.data : error.message);
@@ -102,40 +92,80 @@ class ApiService {
         }
     }
 
-    static async customerRegister(userData){
+    static async customerRegister(userData) {
         try {
             console.log('Sending user data:', userData);
             const response = await axios.post(
                 `${ApiService.BASE_URL}/api/v1/customer/register`,
                 userData,
                 {
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: {'Content-Type': 'application/json'}
                 }
             );
-            console.log("registration Successful: ",response)
+            console.log("registration Successful: ", response)
             return response.data;
         } catch (error) {
             console.error('Error during registration:', error.response ? error.response.data : error.message);
             throw error.response ? error.response.data : new Error('Network or server error');
         }
     }
-    static  async loginProvider(userData){
-            try {
+
+    static async loginProvider(userData) {
+        try {
             console.log('Sending user data:', userData);
             const response = await axios.post(
                 `${ApiService.BASE_URL}/api/v1/ServiceFusion/loginServiceProvider`,
                 userData,
                 {
-                    headers: { 'Content-Type': 'application/json' }
+                    headers: {'Content-Type': 'application/json'}
                 }
             );
-            console.log("login Successful: ",response)
+            console.log("login Successful: ", response)
             return response.data;
         } catch (error) {
             console.error('Error during registration:', error.response ? error.response.data : error.message);
             throw error;
         }
-}
+    }
+
+    static async bookService(userData) {
+        try {
+            console.log('sending user data', userData)
+            const response = await axios.post(
+                `${ApiService.BASE_URL}/api/v1/customer/bookService`,
+                userData,
+                {
+                    headers: {'Content-Type': 'application/json'}
+                }
+            );
+            console.log("Booking Successful: ", response)
+            return response.data;
+        } catch (error) {
+            console.error('There was an error booking a service')
+        }
+    }
+
+    static async getProvider(category, location) {
+        try {
+            console.log("category not found")
+            const response = await axios.post(
+                `${ApiService.BASE_URL}/api/v1/customer/searchForServiceProvider`,
+                {category, location},
+                {
+                    headers: {'Content-Type': 'application/json'}
+                }
+                // {
+                //     params: {category, location},
+                //     headers: {'Content-Type': 'application/json'}
+                // }
+            );
+            console.log("successful", response)
+            return response.data;
+        } catch (error) {
+            console.error("could not get provider category")
+        }
+    }
+
 
 }
 
